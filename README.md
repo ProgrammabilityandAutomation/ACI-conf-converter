@@ -16,7 +16,7 @@ Contacts:
 **Container Installation**
 
 
-docker run -p 9091:9091 containers.cisco.com/sfloresk/aci-conf-converter
+docker run -p 9091:9091 sfloresk/aci-conf-converter
 
 
 **Source Installation**
