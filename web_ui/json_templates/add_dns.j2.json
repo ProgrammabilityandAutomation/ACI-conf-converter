@@ -1,0 +1,11 @@
+{
+  "dnsProv": {
+    "attributes": {
+      "dn": "uni/fabric/dnsp-default/prov-[{{ dns_ip }}]",
+      "addr": "{{ dns_ip }}",
+      "status": "created",
+      "rn": "prov-[{{ dns_ip }}]"
+    },
+    "children": []
+  }
+}

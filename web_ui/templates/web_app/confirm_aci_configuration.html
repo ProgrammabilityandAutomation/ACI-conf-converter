@@ -1,0 +1,184 @@
+<div class="modal fade" id="confirm_aci_configuration" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h3 class="modal-title" id="myModalLabel">Confirmation</h3>
+            </div>
+            <div class="modal-body" style="margin:15px">
+                <div class="row">
+                    <p>
+                        Bellow are the configurations found. Is everything looking good? You can change or add any
+                        config before send
+                    </p>
+                </div>
+
+                <div class="row">
+
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            DNS
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>IP</label>
+                                <input ng-model="apic.dns.ip"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            NTP
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>IP</label>
+                                <input ng-model="apic.ntp.ip"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            TACACS
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>IP</label>
+                                <input ng-model="apic.tacacs.ip"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" ng-model="apic.tacacs.password"
+                                       class="form-control">
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            SysLog
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>IP</label>
+                                <input ng-model="apic.syslog.ip"
+                                       class="form-control">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            SNMP
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label>IP</label>
+                                <input ng-model="apic.snmp.ip"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Port</label>
+                                <input ng-model="apic.snmp.port"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Community</label>
+                                <input ng-model="apic.snmp.community_name"
+                                       class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Version</label>
+                                <select class="form-control" ng-model="apic.snmp.version">
+                                    <option value="2c">
+                                        2c
+                                    </option>
+                                    <option value="3">
+                                        3
+                                    </option>
+                                </select>
+                            </div>
+                            <div ng-if="apic.snmp.version == '3'" class="form-group">
+                                <label>Security Level</label>
+                                <select class="form-control" ng-model="apic.snmp.security_level">
+                                    <option value="auth">
+                                        auth
+                                    </option>
+                                    <option value="noauth">
+                                        noauth
+                                    </option>
+                                    <option value="priv">
+                                        priv
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Users</label>
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th>Username</th>
+                                            <th>Priv Type</th>
+                                            <th>Priv Key</th>
+                                            <th>Auth Type</th>
+                                            <th>Auth Key</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr ng-repeat="user in apic.snmp.users">
+                                            <td>{a user.username a}</td>
+                                            <td>
+                                                <select class="form-control" ng-model="user.priv_type">
+                                                    <option value="aes-128">
+                                                        AES-128
+                                                    </option>
+                                                    <option value="none">
+                                                        None
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+
+                                                <input ng-model="user.priv_key"
+                                                       class="form-control" type="password"
+                                                       ng-disabled="user.priv_type == 'none'">
+                                            </td>
+
+                                            <td>
+                                                <select class="form-control" ng-model="user.auth_type">
+                                                    <option value="md5">
+                                                        MD5
+                                                    </option>
+                                                    <option value="sha">
+                                                        SHA
+                                                    </option>
+                                                </select>
+                                            </td>
+                                            <td>
+                                                <input ng-model="user.auth_key"
+                                                       class="form-control" type="password">
+                                            </td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" ng-click="sendConfiguration()" data-dismiss="modal">Send
+                </button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Configure ACI</h1>
+    </div>
+    <p>Please complete the form with your controller credentails and nexus configurations. We will show you the configuration found prior to be sent to the controller</p>
+<hr/>
+    <form role="form" method="post">
+        <div class="row">
+            <div class="col-lg-1"></div>
+            <div class="col-lg-9">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        APIC Credentials
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>URL</label>
+                                    <input ng-model="apic.url"
+                                           class="form-control"
+                                           placeholder="https://apic-1.cisco.com">
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input ng-model="apic.username"
+                                           class="form-control"
+                                           placeholder="admin">
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="password" ng-model="apic.password"
+                                           class="form-control">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Nexus 9000 Configuration
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="form-group">
+                                    <label>Running configuration</label>
+                                    <p>Do a show running-config in your switch and paste the result in the following
+                                        box</p>
+                                    <textarea ng-model="n9k.running_config"
+                                              class="form-control"
+                                              placeholder="Paste your switch configuration here"
+                                              style="max-width:100%;width: 100%;height: 276px;"></textarea>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-lg-12" style="text-align:right">
+                        <div class="form-group">
+
+                            <a class="btn btn-primary" target="blank" data-toggle="modal" ng-click="findConfiguration()" data-target="#confirm_aci_configuration"
+                           href="#">Find Configurations</a>
+
+                            <button ng-controller="LocationController" class="btn btn-default"
+                                    ng-click="go('/')" style="min-width:100px">Back
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.col-lg-12 -->
+        {% include "web_app/confirm_aci_configuration.html" %}
+    </form>
+</div>
