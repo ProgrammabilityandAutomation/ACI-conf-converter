@@ -1,4 +1,4 @@
-Django==1.11.4
+Django==1.11.15
 Jinja2==2.9.6
 django-rest-framework==0.1.0
 djangorestframework==3.6.3
